@@ -192,7 +192,7 @@ footer{background:var(--black);padding:60px 24px 32px;text-align:center;box-shad
   .hero{padding:120px 20px 60px}
   .sp-hero{padding:120px 20px 60px}
 }
-</style>
+nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidden{transform:translateY(-100%)}</style>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Six Alchemic Portals — Immersive Retreats | Infinity Academy">
@@ -428,5 +428,22 @@ footer{background:var(--black);padding:60px 24px 32px;text-align:center;box-shad
   <p class="footer-copy">© 2026 Infinity Academy · Tarek Bibi · support@tarekbibi.com · All rights reserved</p>
 </footer>
 
-</body>
+<script>
+(function(){
+  var nav=document.querySelector('nav.site-nav');
+  if(!nav) return;
+  var lastY=window.pageYOffset, ticking=false;
+  window.addEventListener('scroll',function(){
+    if(ticking) return;
+    ticking=true;
+    window.requestAnimationFrame(function(){
+      var y=window.pageYOffset;
+      if(y>lastY && y>120){ nav.classList.add('nav-hidden'); }
+      else { nav.classList.remove('nav-hidden'); }
+      lastY=y;
+      ticking=false;
+    });
+  },{passive:true});
+})();
+</script></body>
 </html>
