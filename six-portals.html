@@ -200,10 +200,12 @@ footer{background:var(--black);padding:60px 24px 32px;text-align:center;box-shad
 }
 nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidden{transform:translateY(-100%)}
 /* TESTIMONIAL SLIDERS (video + written) */
-.ts-slider{position:relative;max-width:1080px;margin:48px auto 0;padding:0 44px}
+.ts-slider{position:relative;max-width:1080px;margin:48px auto 0;padding:0 52px;box-sizing:border-box}
 .ts-viewport{overflow:hidden}
-.ts-track{display:flex;transition:transform .45s ease}
-.ts-track>div{flex:0 0 calc((100% - 40px)/3);margin-right:20px;box-sizing:border-box}
+.ts-track{display:flex;gap:20px;transition:transform .45s ease}
+.ts-track>div{flex:0 0 calc((100% - 40px)/3);box-sizing:border-box}
+@media(max-width:900px){.ts-track>div{flex:0 0 calc((100% - 20px)/2)}}
+@media(max-width:600px){.ts-slider{padding:0 40px}.ts-track{gap:0}.ts-track>div{flex:0 0 100%}}
 .tv-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:14px;display:flex;flex-direction:column;text-align:left}
 .tv-frame{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000;margin-bottom:14px}
 .tv-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
@@ -216,8 +218,8 @@ nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidd
 .ts-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
 .ts-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(212,175,55,.3);cursor:pointer;padding:0}
 .ts-dots button.active{background:var(--gold)}
-@media(max-width:900px){.ts-track>div{flex-basis:calc((100% - 20px)/2)}}
-@media(max-width:600px){.ts-slider{padding:0 36px}.ts-track>div{flex-basis:100%;margin-right:0}}
+
+
 </style>
 
 <meta property="og:type" content="website">
@@ -586,8 +588,8 @@ nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidd
     function pages(){return Math.max(1,Math.ceil(slides.length/per()));}
     function go(p){
       var P=pages();idx=Math.max(0,Math.min(p,P-1));
-      var step=100/per();
-      track.style.transform='translateX(-'+(idx*per()*step)+'%)';
+      var vp=s.querySelector('.ts-viewport');
+      track.style.transform='translateX(-'+(idx*vp.clientWidth)+'px)';
       Array.prototype.forEach.call(dotsWrap.children,function(d,i){d.classList.toggle('active',i===idx);});
     }
     function buildDots(){
