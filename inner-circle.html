@@ -183,7 +183,7 @@ footer{background:var(--black);padding:60px 24px 32px;text-align:center;box-shad
 }
 nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidden{transform:translateY(-100%)}
 /* TESTIMONIAL SLIDERS (video + written) */
-.ts-slider{position:relative;max-width:1080px;margin:48px auto 0;padding:0 52px;box-sizing:border-box}
+.ts-slider{position:relative;max-width:1080px;margin:48px auto 0;padding:0 56px;box-sizing:border-box}
 .ts-viewport{overflow:hidden}
 .ts-track{display:flex;gap:20px;transition:transform .45s ease}
 .ts-track>div{flex:0 0 calc((100% - 40px)/3);box-sizing:border-box}
@@ -195,9 +195,9 @@ nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidd
 .tv-name{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin:0 0 2px}
 .tv-role{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,249,240,.6);margin:0 0 10px}
 .tv-caption{font-size:.9rem;color:var(--text-body);line-height:1.55;font-style:italic;margin:0}
-.ts-arrow{position:absolute;top:38%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.4);background:rgba(20,10,35,.7);color:var(--gold);font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.ts-arrow{position:absolute;top:120px;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.4);background:rgba(20,10,35,.85);color:var(--gold);font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .ts-arrow:hover{background:rgba(212,175,55,.2)}
-.ts-prev{left:0}.ts-next{right:0}
+.ts-prev{left:6px}.ts-next{right:6px}
 .ts-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
 .ts-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(212,175,55,.3);cursor:pointer;padding:0}
 .ts-dots button.active{background:var(--gold)}
@@ -543,8 +543,15 @@ Likewise, if I properly request to be forgotten, you will delete the data you ha
     function pages(){return Math.max(1,Math.ceil(slides.length/per()));}
     function go(p){
       var P=pages();idx=Math.max(0,Math.min(p,P-1));
-      var vp=s.querySelector('.ts-viewport');
-      track.style.transform='translateX(-'+(idx*vp.clientWidth)+'px)';
+      var lead=idx*per();
+      if(lead>slides.length-1)lead=slides.length-1;
+      // snap to the actual left offset of the lead card (accounts for gaps exactly)
+      var offset=slides[lead]?slides[lead].offsetLeft:0;
+      // clamp so the last page doesn't over-scroll past the final card
+      var maxScroll=track.scrollWidth-track.parentNode.clientWidth;
+      if(offset>maxScroll)offset=maxScroll;
+      if(offset<0)offset=0;
+      track.style.transform='translateX(-'+offset+'px)';
       Array.prototype.forEach.call(dotsWrap.children,function(d,i){d.classList.toggle('active',i===idx);});
     }
     function buildDots(){
