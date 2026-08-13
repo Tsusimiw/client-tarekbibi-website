@@ -213,7 +213,27 @@ footer{background:var(--black);padding:60px 24px 32px;text-align:center;box-shad
   .t-grid{grid-template-columns:1fr}
   .t-grid-3{grid-template-columns:1fr}
 }
-nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidden{transform:translateY(-100%)}</style>
+nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidden{transform:translateY(-100%)}
+/* TESTIMONIAL SLIDERS (video + written) */
+.ts-slider{position:relative;max-width:1080px;margin:48px auto 0;padding:0 44px}
+.ts-viewport{overflow:hidden}
+.ts-track{display:flex;transition:transform .45s ease}
+.ts-track>div{flex:0 0 calc((100% - 40px)/3);margin-right:20px;box-sizing:border-box}
+.tv-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:14px;display:flex;flex-direction:column;text-align:left}
+.tv-frame{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000;margin-bottom:14px}
+.tv-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.tv-name{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin:0 0 2px}
+.tv-role{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,249,240,.6);margin:0 0 10px}
+.tv-caption{font-size:.9rem;color:var(--text-body);line-height:1.55;font-style:italic;margin:0}
+.ts-arrow{position:absolute;top:38%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.4);background:rgba(20,10,35,.7);color:var(--gold);font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.ts-arrow:hover{background:rgba(212,175,55,.2)}
+.ts-prev{left:0}.ts-next{right:0}
+.ts-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.ts-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(212,175,55,.3);cursor:pointer;padding:0}
+.ts-dots button.active{background:var(--gold)}
+@media(max-width:900px){.ts-track>div{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:600px){.ts-slider{padding:0 36px}.ts-track>div{flex-basis:100%;margin-right:0}}
+</style>
 
 <!-- Open Graph / Social Share -->
 <meta property="og:type" content="website">
@@ -442,159 +462,132 @@ nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidd
     <h2 class="section-title">What Soul-Led Entrepreneurs Are Experiencing</h2>
     <div class="gold-line" style="margin:0 auto 0"></div>
 
-    <h3 class="t-group-label first">Written Stories</h3>
-    <div class="t-group-line"></div>
-    <div class="t-grid-3">
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“I came in with $30K of debt and a shattered sense of self-worth. Within months, my relationship with money completely transformed. I launched my first offering and felt proud for the first time.”</p>
-        <p class="t-author">Sarah M.</p>
-        <p class="t-role">Healer &amp; Coach</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“The Infinity Healing Technique goes beyond anything I’ve experienced. It’s not therapy, it’s not coaching — it’s a complete energetic reset. I feel like myself again for the first time in years.”</p>
-        <p class="t-author">Maya R.</p>
-        <p class="t-role">Spiritual Entrepreneur</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“I finally launched my signature program after years of hiding. The combination of healing and business strategy is unlike anything else. I feel visible, confident and clear about my purpose.”</p>
-        <p class="t-author">Layla K.</p>
-        <p class="t-role">Intuitive Guide</p>
-      </div>
-
+    <!-- VIDEO SLIDER -->
+    <div class="ts-slider" data-per="3" aria-label="Video testimonials">
+      <button class="ts-arrow ts-prev" aria-label="Previous">&#8249;</button>
+      <div class="ts-viewport"><div class="ts-track ts-video-track">
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/707714563?h=a853046477" title="Sonny Pham testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Sonny Pham</p>
+          <p class="tv-role">Real Estate Agent</p>
+          <p class="tv-caption">Manifested $58,000 in his first month — then $72,000 the next.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/707722733?h=5ed381cb43" title="Jillian Wisborg testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Jillian Wisborg</p>
+          <p class="tv-role">Holistic Nutrition & Iridology</p>
+          <p class="tv-caption">Quit her job and hit $6,000/month in her own business within 3 months.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/707724149?h=bdcf30c1d5" title="Nastacha Grace testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Nastacha Grace</p>
+          <p class="tv-role">Hypnotherapist & Healer</p>
+          <p class="tv-caption">Doubled her prices and created her first $5,000 package — 4 clients in 2 months.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://www.youtube.com/embed/S2qoCY1PTog" title="Felisa Masey testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Felisa Masey</p>
+          <p class="tv-role">Infinity Healer</p>
+          <p class="tv-caption">From $50 to $10,000 from her gifts.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://www.youtube.com/embed/af7cUrBAndI" title="Sharla testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Sharla</p>
+          <p class="tv-role">Breathwork & Yoga Trainer</p>
+          <p class="tv-caption">30x her income after applying Infinity Healing.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://www.youtube.com/embed/CauBvRU90JI" title="Yvette testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Yvette</p>
+          <p class="tv-role">Infinity Healer</p>
+          <p class="tv-caption">Manifested $35,000 in money miracles after the first module.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/707726087?h=48609d5c3a" title="Jennifer Gerhard testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Jennifer Gerhard</p>
+          <p class="tv-role">Spiritual Entrepreneur</p>
+          <p class="tv-caption">Working half the time but earning a full income.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/693427364?h=7f84775de1" title="Amanda Giebel testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Amanda Giebel</p>
+          <p class="tv-role">Infinity Healer</p>
+          <p class="tv-caption">Manifested $20,000 in 2 weeks.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/693426732?h=d26f663862" title="Lindsey Wells testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Lindsey Wells</p>
+          <p class="tv-role">Coach</p>
+          <p class="tv-caption">Sold her first $10K package — back to back.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/693425905?h=f11400a3e0" title="Dana Cameron testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Dana Cameron</p>
+          <p class="tv-role">Healer</p>
+          <p class="tv-caption">Cleared $35,000 of debt.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://www.youtube.com/embed/ug2UD7yRvOg" title="Hillary Faye testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Hillary Faye</p>
+          <p class="tv-role">Coach</p>
+          <p class="tv-caption">Landed a $12,000 launch.</p>
+        </div>
+        <div class="tv-card">
+          <div class="tv-frame"><iframe src="https://player.vimeo.com/video/710317388?h=b2d4938f62" title="Diana testimonial" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <p class="tv-name">Diana</p>
+          <p class="tv-role">Infinity Healer</p>
+          <p class="tv-caption">“I'm a closet healer NO MORE!”</p>
+        </div>
+      </div></div>
+      <button class="ts-arrow ts-next" aria-label="Next">&#8250;</button>
+      <div class="ts-dots"></div>
     </div>
 
-    <div class="t-grid-3">
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“NEXT DAY the bank calls, apologizing for the delay and giving an answer to an important question they had ignored for a year. Their lawyer wrote that the convention would be ready in days. The way it is looking, this program will have saved me around $150,000 USD! Here’s the latest miracle: I also found this week two properties for the price of one. Thank you Tarek — I really WAS at the end of my rope.”</p>
-        <p class="t-author">Claudia Calvo</p>
-        <p class="t-role">Costa Rica</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“I was having self-destructive tendencies, major financial obstacles, and was living in fear. Two days after my one-on-one session with Tarek, I received a call telling me I’d been accepted to a special graduate-school loan repayment program. I had so much fear and denial about repaying my school loans — and suddenly over $100,000 in school debt disappeared.”</p>
-        <p class="t-author">Christine</p>
-        <p class="t-role">Medical Student, USA</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-body">“A year ago I was living month to month, constantly worried about my debt. When I started the series I had a breakthrough at work where many more clients came to me, and I was able to pay off a lot of debt. I’ve tried many programs for money, but when I applied Infinity Healing to my finances, powerful inner shifts and results started to happen fast. I now have a daily feeling of being taken care of.”</p>
-        <p class="t-author">Anastasia</p>
-        <p class="t-role">Chicago, IL</p>
-      </div>
-
+    <!-- WRITTEN SLIDER -->
+    <div class="ts-slider ts-written" data-per="3" aria-label="Written testimonials" style="margin-top:56px">
+      <button class="ts-arrow ts-prev" aria-label="Previous">&#8249;</button>
+      <div class="ts-viewport"><div class="ts-track">
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“I came in with $30K of debt and a shattered sense of self-worth. Within months, my relationship with money completely transformed. I launched my first offering and felt proud for the first time.”</p>
+          <p class="t-author">Sarah M.</p>
+          <p class="t-role">Healer & Coach</p>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“The Infinity Healing Technique goes beyond anything I’ve experienced. It’s not therapy, it’s not coaching — it’s a complete energetic reset. I feel like myself again for the first time in years.”</p>
+          <p class="t-author">Maya R.</p>
+          <p class="t-role">Spiritual Entrepreneur</p>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“I finally launched my signature program after years of hiding. The combination of healing and business strategy is unlike anything else. I feel visible, confident and clear about my purpose.”</p>
+          <p class="t-author">Layla K.</p>
+          <p class="t-role">Intuitive Guide</p>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“NEXT DAY the bank calls, apologizing for the delay on a question they’d ignored for a year. This program will have saved me around $150,000 USD — and I found two properties for the price of one. I really WAS at the end of my rope.”</p>
+          <p class="t-author">Claudia Calvo</p>
+          <p class="t-role">Costa Rica</p>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“Two days after my one-on-one session with Tarek, I was accepted into a special graduate-school loan repayment program. Suddenly over $100,000 in school debt disappeared.”</p>
+          <p class="t-author">Christine</p>
+          <p class="t-role">Medical Student, USA</p>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-body">“When I started the series I had a breakthrough at work — many more clients came to me and I paid off a lot of debt. When I applied Infinity Healing to my finances, powerful inner shifts started to happen fast. I now feel taken care of every day.”</p>
+          <p class="t-author">Anastasia</p>
+          <p class="t-role">Chicago, IL</p>
+        </div>
+      </div></div>
+      <button class="ts-arrow ts-next" aria-label="Next">&#8250;</button>
+      <div class="ts-dots"></div>
     </div>
 
-    <h3 class="t-group-label">Video Stories</h3>
-    <div class="t-group-line"></div>
-    <div class="t-grid">
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/707714563?h=a853046477" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Sonny Pham — Real Estate Agent</p>
-        <p class="t-role">Manifested $58,000 in month one, then another $72,000 the next</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/707722733?h=5ed381cb43" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Jillian Wisborg — Herbal Medicine &amp; Holistic Nutrition</p>
-        <p class="t-role">Quit her job and earned $6,000/month in her own business within 3 months</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/707724149?h=bdcf30c1d5" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Nastacha Grace — Hypnotherapist &amp; Healer</p>
-        <p class="t-role">Doubled her prices and created her first $5,000 package with 4 clients</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/707726087?h=48609d5c3a" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Jennifer Gerhard</p>
-        <p class="t-role">Working half the time but earning a full income</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://www.youtube.com/embed/S2qoCY1PTog" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Felisa Masey</p>
-        <p class="t-role">From $50 to $10,000 from her gifts</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://www.youtube.com/embed/af7cUrBAndI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Sharla — Breathwork &amp; Yoga Trainer</p>
-        <p class="t-role">30x her income after Infinity Healing</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://www.youtube.com/embed/CauBvRU90JI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Yvette</p>
-        <p class="t-role">Manifested $35,000 in money miracles after the first module</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/693427364?h=7f84775de1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Amanda Giebel</p>
-        <p class="t-role">Manifested $20,000 in 2 weeks</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/693426732?h=d26f663862" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Lindsey Wells</p>
-        <p class="t-role">Sold her first $10K package, back to back</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/693425905?h=f11400a3e0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Dana Cameron</p>
-        <p class="t-role">Cleared $35,000 of debt</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://www.youtube.com/embed/ug2UD7yRvOg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Hillary Faye</p>
-        <p class="t-role">Landed a $12,000 launch</p>
-      </div>
-
-      <div class="t-card">
-        <div class="t-video-wrap">
-          <iframe src="https://player.vimeo.com/video/710317388?h=b2d4938f62" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <p class="t-video-caption">Diana</p>
-        <p class="t-role">A closet healer NO MORE</p>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -644,5 +637,39 @@ nav.site-nav{transition:transform .35s ease,background .4s}nav.site-nav.nav-hidd
     });
   },{passive:true});
 })();
-</script></body>
+</script>
+<script>
+(function(){
+  function initSlider(s){
+    var track=s.querySelector('.ts-track');
+    var slides=Array.prototype.slice.call(track.children);
+    var dotsWrap=s.querySelector('.ts-dots');
+    function per(){var w=window.innerWidth;return w<=600?1:(w<=900?2:3);}
+    var idx=0;
+    function pages(){return Math.max(1,Math.ceil(slides.length/per()));}
+    function go(p){
+      var P=pages();idx=Math.max(0,Math.min(p,P-1));
+      var step=100/per();
+      track.style.transform='translateX(-'+(idx*per()*step)+'%)';
+      Array.prototype.forEach.call(dotsWrap.children,function(d,i){d.classList.toggle('active',i===idx);});
+    }
+    function buildDots(){
+      dotsWrap.innerHTML='';
+      for(var i=0;i<pages();i++){(function(i){var b=document.createElement('button');b.addEventListener('click',function(){go(i);});dotsWrap.appendChild(b);})(i);}
+    }
+    s.querySelector('.ts-prev').addEventListener('click',function(){go(idx-1);});
+    s.querySelector('.ts-next').addEventListener('click',function(){go(idx+1);});
+    // swipe
+    var x0=null;
+    s.querySelector('.ts-viewport').addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    s.querySelector('.ts-viewport').addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(dx<0?idx+1:idx-1);}x0=null;});
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){buildDots();go(0);},150);});
+    buildDots();go(0);
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    Array.prototype.forEach.call(document.querySelectorAll('.ts-slider'),initSlider);
+  });
+})();
+</script>
+</body>
 </html>
