@@ -348,10 +348,10 @@ nav.site-nav{transition:transform .35s ease,background .4s}
 nav.site-nav.nav-hidden{transform:translateY(-100%)}
 @media(max-width:600px){nav.site-nav{padding:16px 20px}}
 
-/* MEET GUIDE closing paragraphs - horizontal 2-col, no box */
-.tarek-closing{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1080px;margin:32px auto 0}
-.tarek-closing-card p{margin:0;line-height:1.75;color:var(--text-body)}
-@media(max-width:700px){.tarek-closing{grid-template-columns:1fr;gap:20px}}
+/* MEET GUIDE closing paragraphs - newspaper column flow */
+.tarek-closing{column-count:2;column-gap:40px;max-width:1080px;margin:32px auto 0}
+.tarek-closing p{margin:0 0 16px;line-height:1.75;color:var(--text-body)}
+@media(max-width:700px){.tarek-closing{column-count:1}}
 
 .footer-social a svg{width:16px;height:16px;display:block}
 </style>
@@ -546,12 +546,8 @@ nav.site-nav.nav-hidden{transform:translateY(-100%)}
       </div>
     </div>
     <div class="tarek-closing">
-      <div class="tarek-closing-card">
-        <p>I've dedicated my life to helping lightworkers and conscious humans reclaim their hearts. To heal the wounds that keep them isolated. To reconnect with the love that is their true nature.</p>
-      </div>
-      <div class="tarek-closing-card">
-        <p>Your heart is not broken. It's just waiting to be remembered. And I'm here to guide you home.</p>
-      </div>
+      <p>I've dedicated my life to helping lightworkers and conscious humans reclaim their hearts. To heal the wounds that keep them isolated. To reconnect with the love that is their true nature.</p>
+      <p>Your heart is not broken. It's just waiting to be remembered. And I'm here to guide you home.</p>
     </div>
   </div>
 </section>
